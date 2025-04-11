@@ -1,0 +1,360 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Cuadros de inicio de sesión y registro */
+
+.login-box, .register-box {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Botones de Google */
+.google-button {
+    margin-top: 20px;
+}
+.google-button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+.google-button button i {
+    font-size: 20px;
+}
+.google-button button:hover {
+    background-color: #357ae8;
+    transform: scale(1.05);
+}
+
+/* Estilos para el formulario de inicio de sesión */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Enlace de contraseña olvidada */
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Estilos del nav copiados de indext.css */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f8f9fa;
+}
+.logo img {
+    height: 50px;
+}
+.nav-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0 20px;
+    text-align: center;
+    flex-grow: 1;
+}
+.search {
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+}
+.search-box {
+    padding: 5px;
+    margin-left: 10px;
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.nav-link {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+.nav-link:hover {
+    text-decoration: underline;
+}
+.nav-icon {
+    margin-left: 5px;
+}
+.menu-icon {
+    margin-left: 35px; /* Separación del logo */
+}
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px; /* Ampliar el ancho del menú */
+    height: 100%;
+    background: white; /* Fondo blanco */
+    color: black; /* Texto negro */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.893);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+.menu-lateral.visible {
+    left: 0;
+}
+.menu-cerrar {
+    text-align: right;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: black; /* Texto negro para el botón de cerrar */
+}
+.menu-cerrar:hover {
+    color: #000000c0; /* Cambiar color al pasar el mouse */
+}
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu-lateral ul li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.05); /* Fondo gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: transform 0.2s, background-color 0.3s;
+}
+.menu-lateral ul li:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    background-color: black; /* Fondo negro al pasar el mouse */
+    color: white; /* Texto blanco al pasar el mouse */
+}
+.menu-lateral ul li a {
+    text-decoration: none;
+    color: black; /* Texto negro para los enlaces */
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    transition: color 0.3s;
+}
+.menu-lateral ul li a:hover {
+    color: white; /* Texto blanco al pasar el mouse */
+}
+.sub-menu {
+    display: none;
+    grid-template-columns: repeat(2, 1fr); /* Mostrar productos en dos columnas */
+    gap: 10px; /* Espacio entre productos */
+    padding: 10px; /* Espaciado interno */
+}
+.sub-menu.visible {
+    display: grid; /* Cambiar a grid para organizar en columnas */
+}
+.sub-menu li {
+    background-color: rgba(0, 0, 0, 0.05); /* Fondo gris claro */
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s, background-color 0.3s;
+}
+.sub-menu li:hover {
+    transform: scale(1.05);
+    background-color: black; /* Fondo negro al pasar el mouse */
+    color: white; /* Texto blanco al pasar el mouse */
+}
+.sub-menu li a {
+    font-size: 1rem;
+    color: black; /* Texto negro para los enlaces del submenú */
+    text-decoration: none;
+    display: block;
+}
+.sub-menu li a:hover {
+    color: white; /* Texto blanco al pasar el mouse */
+}
+.menu-logo {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    margin-bottom: 10px; /* Reducir el espacio entre el logo y las opciones del menú */
+}
+.menu-logo img {
+    width: 150px; /* Aumentar el tamaño del logo */
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #f8f9fa; /* Fondo neutro */
+        color: #333; /* Texto oscuro */
+    }
+    .logo img {
+        height: 40px;
+    }
+    .menu-icon {
+        font-size: 1.5rem;
+        color: #333; /* Icono oscuro */
+        cursor: pointer;
+    }
+    .nav-title {
+        font-size: 1rem;
+        margin: 10px 0;
+        text-align: center;
+        flex-basis: 100%; /* Ocupa toda la fila */
+        color: #333; /* Texto oscuro */
+    }
+    .search {
+        flex-basis: 100%; /* Ocupa toda la fila */
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+    .search-box {
+        flex-grow: 1;
+        padding: 8px;
+        font-size: 0.9rem;
+        border-radius: 20px;
+        border: 1px solid #ccc; /* Borde gris claro */
+        outline: none;
+    }
+    .search i {
+        margin-left: 10px;
+        font-size: 1.2rem;
+        color: #333; /* Icono oscuro */
+    }
+    .nav-link {
+        font-size: 0.9rem;
+        color: #333; /* Texto oscuro */
+        margin: 5px 10px;
+        display: flex;
+        align-items: center;
+    }
+    .nav-link i {
+        margin-right: 5px;
+    }
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+
+    .container {
+        flex-direction: column; /* Cambiar a disposición vertical */
+        gap: 20px; /* Reducir el espacio entre las cajas */
+        padding: 0 15px; /* Añadir espacio lateral */
+    }
+
+    .login-box, .register-box {
+        max-width: 90%; /* Reducir el ancho máximo */
+        padding: 20px; /* Reducir el espacio interno */
+        border-radius: 12px; /* Bordes más redondeados */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
+    }
+
+    .login-box h1, .register-box h2 {
+        font-size: 1.5rem; /* Reducir el tamaño del título */
+    }
+
+    .google-button button {
+        font-size: 14px; /* Reducir el tamaño del texto */
+        padding: 12px 18px; /* Reducir el espacio interno */
+    }
+}
+@media (max-width: 480px) {
+    .menu-icon {
+        font-size: 1.8rem;
+    }
+    .nav-title {
+        font-size: 0.9rem;
+    }
+    .search-box {
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+    .nav-link {
+        font-size: 0.8rem;
+    }
+    .login-box, .register-box {
+        max-width: 85%; /* Reducir aún más el ancho máximo */
+        padding: 15px; /* Reducir aún más el espacio interno */
+        border-radius: 10px; /* Bordes más pequeños */
+        margin-bottom: 20px; /* Añadir espacio entre los contenedores */
+    }
+
+    .login-box {
+        margin-top: 130px; /* Añadir espacio superior */
+    }
+
+    .login-box h1, .register-box h2 {
+        font-size: 1.3rem; /* Reducir más el tamaño del título */
+    }
+
+    .google-button button {
+        font-size: 13px; /* Reducir más el tamaño del texto */
+        padding: 10px 16px; /* Reducir más el espacio interno */
+    }
+
+    .forgot-password {
+        font-size: 13px; /* Reducir el tamaño del texto */
+    }
+}

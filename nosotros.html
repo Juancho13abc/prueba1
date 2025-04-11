@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="src/css/indext.css"> <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Íconos FontAwesome -->
+    <link rel="stylesheet" href="src/css/nosotros.css"> <!-- Estilos específicos del perfil -->
+    <script src="src/js/main.js" defer></script> <!-- Enlace al archivo JS externo -->
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="src/assets/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-title">¡Precios de tienda en la puerta de tu casa!</div>
+        <div class="search">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search-box" placeholder="Buscar...">
+        </div>
+        <a href="nosotros.html" class="nav-link">
+            <i class="fas fa-info-circle nav-icon"></i>
+            nosotros
+        </a>
+        <a href="perfil.html" class="nav-link"> 
+            <i class="fas fa-user nav-icon"></i>
+            perfil
+        </a>
+        <a href="#" class="nav-link"> 
+            <i class="fas fa-shopping-cart nav-icon"></i>
+        </a>
+    </nav>
+
+    <div class="menu-lateral">
+        <div class="menu-logo">
+            <img src="src/assets/logo.png" alt="Logo" style="width: 100px; margin-bottom: 20px;">
+        </div>
+        <div class="menu-cerrar">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+        <ul>
+            <li><a href="#1" id="productos-link">Productos</a></li>
+            <ul class="sub-menu" id="sub-menu-productos" style="display: none;">
+                <li><a href="#">Abarrotes / Despensa</a></li>
+                <li><a href="#">Limpieza y Hogar</a></li>
+                <li><a href="#">Bebidas</a></li>
+                <li><a href="#">Dulcería y Galletas</a></li>
+                <li><a href="#">Higiene Personal</a></li>
+                <li><a href="#">Lácteos y Derivados</a></li>
+                <li><a href="#">Enlatados y Conservas</a></li>
+                <li><a href="#">Papelería y Varios</a></li>
+            </ul>
+        </ul>
+    </div>
+            
+
+    <div class="carrito-lateral">
+        <div class="carrito-header">
+            <h2>Carrito de Compras</h2>
+            <button class="carrito-cerrar">&times;</button>
+        </div>
+        <div class="carrito-body">
+            <ul class="carrito-lista">
+                <!-- Aquí se mostrarán los productos añadidos al carrito -->
+            </ul>
+        </div>
+        <div class="carrito-footer">
+            <p>Total: <span class="carrito-total">$0</span></p>
+            <button class="carrito-pagar">Ir a Pagar</button>
+        </div>
+    </div>
+
+    <section class="mision-vision">
+        <div class="contenedor">
+            <div class="mision">
+                <h2>Misión</h2>
+                <p>Ser una empresa con solidez económica, cumplidora de las expectativas de los empleados, clientes y proveedores. Con una amplia gama de productos de consumo masivo, mediante el trabajo de un equipo competente y comprometido con la operación de la compañía.</p>
+            </div>
+            <div class="vision">
+                <h2>Visión</h2>
+                <p>Especializar para el año 2027 a Dsurtiendo S.A.S, como una de las empresas líderes de la región, en diferentes segmentos en los que se opera, con crecimientos superiores al 10% interanual, satisfaciendo a todas las partes interesadas.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function handleGoogleLogin(response) {
+            console.log("Iniciar sesión con Google:", response.credential);
+            // Aquí puedes enviar el token al servidor para validarlo
+        }
+
+        function handleGoogleRegister(response) {
+            console.log("Registro con Google:", response.credential);
+            // Aquí puedes enviar el token al servidor para registrar al usuario
+        }
+
+        function handleCredentialResponse(response) {
+            console.log("Credenciales de Google: ", response.credential);
+            // Aquí puedes enviar el token al servidor para validarlo
+        }
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+</body>
+</html>

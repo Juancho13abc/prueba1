@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="src/css/pago.css"> <!-- Enlace al archivo CSS específico de pago -->
+    <script src="src/js/pago.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="src/assets/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-title">
+            Tu compra es 100% segura
+        </div>
+        <div class="nav-icon">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+    </nav>
+    <h1>Carrito de Compras</h1>
+    <main>
+        <div class="content">
+            <!-- Sección de productos -->
+            <div class="productos">
+                <h2>Productos en el carrito</h2>
+                <div id="pago-detalles">
+                    <!-- Aquí se mostrarán los productos seleccionados -->
+                </div>
+            </div>
+            <!-- Sección de resumen -->
+            <div class="resumen">
+                <h2>Resumen de la compra</h2>
+                <p id="direccion-resumen" style="font-size: 14px; color: #555; margin-bottom: 15px; display: none;">
+                    <!-- Aquí se mostrará la dirección completa si está llena -->
+                </p>
+                <button id="direccion-entrega-btn" class="btn-direccion">Dirección de entrega</button>
+                <p>Subtotal: <strong id="total-productos">$0</strong></p>
+                <p>Costo de envío: <strong id="costo-envio">$0</strong></p>
+                <p>Total a pagar: <strong id="total-final">$0</strong></p>
+                <button id="generar-factura" class="btn-pagar">Generar Factura</button>
+                <button class="btn-seguir" onclick="window.location.href='index.html'">Seguir comprando</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Barra lateral para la dirección de entrega -->
+    <div id="direccion-lateral" class="direccion-lateral">
+        <div class="direccion-header">
+            <h2>Opciones de entrega</h2>
+            <button id="direccion-cerrar" class="direccion-cerrar">&times;</button>
+        </div>
+        <div class="direccion-body">
+            <label for="departamento">*Departamento</label>
+            <select id="departamento">
+                <option value="Huila">Huila</option>
+                <!-- Agregar más opciones aquí -->
+            </select>
+            <label for="municipio">*Municipio o ciudad capital</label>
+            <select id="municipio">
+                <option value="Neiva">Neiva</option>
+                <!-- Agregar más opciones aquí -->
+            </select>
+            <label for="tipo-direccion">*Tipo de dirección</label>
+            <select id="tipo-direccion">
+                <option value="Seleccionar">Seleccionar</option>
+                <option value="Autopista">Autopista</option>
+                <option value="Av. Carrera">Av. Carrera</option>
+                <option value="Av. Diagonal">Av. Diagonal</option>
+                <option value="Av. Transversal">Av. Transversal</option>
+                <option value="Avenida Calle">Avenida Calle</option>
+                <option value="Calle">Calle</option>
+                <option value="Carrera">Carrera</option>
+                <option value="Circular">Circular</option>
+                <option value="Circunvalar">Circunvalar</option>
+                <option value="Diagonal">Diagonal</option>
+                <option value="Manzana">Manzana</option>
+                <option value="Otro">Otro</option>
+                <option value="Transversal">Transversal</option>
+                <option value="Vía">Vía</option>
+            </select>
+            <label for="calle">*Calle</label>
+            <input id="calle" type="text" placeholder="Ej: 18">
+            <label for="numero">*Número</label>
+            <div style="display: flex; gap: 10px;">
+                <input id="numero1" type="text" placeholder="79A">
+                <input id="numero2" type="text" placeholder="33">
+            </div>
+            <label for="barrio">*Barrio</label>
+            <input id="barrio" type="text" placeholder="Ej: Los Colores">
+            <label for="piso">Piso/Apartamento/Torre/Edificio</label>
+            <input id="piso" type="text" placeholder="Ej: Torre 5 Apto 302">
+            <label for="nombre-recibe">*Nombre de la persona que recibe</label>
+            <input id="nombre-recibe" type="text" placeholder="Ej: Juan David Muñoz Calderón">
+            <button id="guardar-direccion" class="btn-direccion" style="margin-top: 15px;">Guardar dirección</button>
+        </div>
+    </div>
+</body>
+</html>
