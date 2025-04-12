@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Agregar en el <head> si no está incluida -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="../src/js/preparador.js" defer></script>
+    <style>
+        @media (max-width: 1024px) {
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #f8f9fa;
+                margin: 0;
+            }
+            .mobile-warning {
+                display: block;
+                text-align: center;
+                font-size: 1.25rem;
+                color: #333;
+                font-weight: bold;
+                padding: 1rem;
+                background: white;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .main-content {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-warning {
+                display: none;
+            }
+            .main-content {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="mobile-warning">
+        Esta página no está disponible para dispositivos móviles. Por favor, acceda desde un computador para continuar.
+    </div>
+    <div class="main-content">
+        <div id="menu-overlay"></div>
+        <div class="flex">
+            <button id="menu-toggle" class="bg-gray-800 text-white p-2 fixed top-4 left-4 md:hidden">
+                <i class="fas fa-bars"></i>
+            </button>
+            <aside id="menu-sidebar" class="w-64 bg-gray-800 text-white h-screen">
+                <div class="p-4 text-center">
+                    <i class="fas fa-box-open text-4xl mb-2"></i> <!-- Ícono representativo -->
+                    <div class="font-bold text-lg">Panel Preparador</div>
+                </div>
+                <nav class="mt-4">
+                    <a href="#pedidos" class="block py-2 px-4 hover:bg-gray-700" data-panel="pedidos">Pedidos Pendientes</a>
+                </nav>
+            </aside>
+            <main class="flex-1 p-6">
+                <header class="flex justify-between items-center bg-white p-4 shadow">
+                    <h1 class="text-xl font-bold">Bienvenido, Preparador</h1>
+                    <div>
+                        <span class="mr-4">Rol: Preparador</span>
+                        <button class="bg-red-500 text-white px-4 py-2 rounded">Cerrar sesión</button>
+                    </div>
+                </header>
+
+                <!-- Panel de Control -->
+                <div id="panel-control">
+                    <!-- Pedidos Pendientes -->
+                    <section id="pedidos" class="mt-6">
+                        <h2 class="text-lg font-bold mb-4">Pedidos Pendientes</h2>
+                        <table class="w-full bg-white shadow rounded">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="py-2 px-4">ID Pedido</th>
+                                    <th class="py-2 px-4">Cliente</th>
+                                    <th class="py-2 px-4">Estado</th>
+                                    <th class="py-2 px-4">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-pedidos">
+                                <!-- Aquí se cargarán los pedidos pendientes -->
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- Detalles del Pedido -->
+                    <section id="detalles-pedido" class="mt-6 hidden">
+                        <button id="retroceder" class="bg-gray-500 text-white px-4 py-2 rounded mb-4">Volver</button>
+                        <h2 class="text-lg font-bold mb-4">Productos del Pedido</h2>
+                        <table class="w-full bg-white shadow rounded">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="py-2 px-4">Producto</th>
+                                    <th class="py-2 px-4">Cantidad</th>
+                                    <th class="py-2 px-4">Código</th>
+                                    <th class="py-2 px-4">Verificar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-productos">
+                                <!-- Aquí se cargarán los productos del pedido -->
+                            </tbody>
+                        </table>
+                        <button id="confirmar" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Confirmar</button>
+                        <button id="marcar-listo" class="bg-green-500 text-white px-4 py-2 rounded mt-4 hidden">Marcar como Listo para Entrega</button>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuSidebar = document.getElementById('menu-sidebar');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        menuToggle.addEventListener('click', () => {
+            menuSidebar.classList.add('open');
+            menuOverlay.classList.add('active');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            menuSidebar.classList.remove('open');
+            menuOverlay.classList.remove('active');
+        });
+
+        // Bloquear acceso desde dispositivos móviles
+        if (window.innerWidth <= 768) {
+            alert("Esta página no está disponible para dispositivos móviles.");
+            document.body.innerHTML = "<h1 style='text-align: center; margin-top: 20%;'>Esta página no está disponible para dispositivos móviles. Por favor, acceda desde un computador para continuar.</h1>";
+        }
+    </script>
+</body>
+</html>

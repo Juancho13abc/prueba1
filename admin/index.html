@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../src/js/admin.js" defer></script> <!-- Enlace al archivo JS externo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @media (max-width: 768px) {
+            aside {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                height: 100%;
+                transition: left 0.3s ease;
+            }
+            aside.open {
+                left: 0;
+            }
+            main {
+                margin-left: 0;
+            }
+            #menu-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 10;
+            }
+            #menu-overlay.active {
+                display: block;
+            }
+            #menu-close {
+                display: block;
+            }
+            #menu-toggle {
+                display: block;
+            }
+        }
+        @media (min-width: 769px) {
+            #menu-close {
+                display: none;
+            }
+            #menu-toggle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="main-content">
+        <div id="menu-overlay"></div>
+        <div class="flex">
+            <!-- Menú lateral -->
+            <aside id="menu-sidebar" class="w-64 bg-gray-800 text-white h-screen fixed md:relative z-20">
+                <div class="p-4 text-center">
+                    <i class="fas fa-user-shield text-4xl mb-2"></i> <!-- Ícono representativo -->
+                    <div class="font-bold text-lg">Panel Administrador</div>
+                </div>
+                <nav class="mt-4">
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-700">
+                        <i class="fas fa-boxes mr-2"></i> Inventario
+                    </a>
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-700">
+                        <i class="fas fa-utensils mr-2"></i> Preparado
+                    </a>
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-700">
+                        <i class="fas fa-cog mr-2"></i> Configuración
+                    </a>
+                </nav>
+                <button id="menu-close" class="absolute bottom-4 left-4 bg-red-500 text-white p-2 rounded">
+                    <i class="fas fa-times"></i> Salir
+                </button>
+            </aside>
+            <!-- Botón para abrir/cerrar menú en móviles -->
+            <button id="menu-toggle" class="bg-gray-800 text-white p-2 fixed top-4 left-4 md:hidden">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Contenido principal -->
+            <main class="flex-1 p-6">
+                <header class="flex justify-between items-center bg-white p-4 shadow">
+                    <h1 class="text-xl font-bold flex items-center">
+                        <i class="fas fa-user-shield mr-2"></i> Bienvenido, Administrador
+                    </h1>
+                    <div>
+                        <span class="mr-4">Rol: Admin</span>
+                        <button class="bg-red-500 text-white px-4 py-2 rounded">Cerrar sesión</button>
+                    </div>
+                </header>
+                <section class="mt-6">
+                    <h2 class="text-lg font-bold mb-4">Pedidos</h2>
+                    <div class="mb-4">
+                        <label for="filtro-mes">Filtrar por mes:</label>
+                        <select id="filtro-mes" class="border p-2">
+                            <option value="enero">Enero</option>
+                            <option value="febrero">Febrero</option>
+                            <!-- Más opciones -->
+                        </select>
+                        <label for="filtro-estado">Estado:</label>
+                        <select id="filtro-estado" class="border p-2">
+                            <option value="pendiente">Pendiente</option>
+                            <option value="listo">Listo</option>
+                            <option value="entregado">Entregado</option>
+                        </select>
+                    </div>
+                    <table class="w-full bg-white shadow rounded">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="py-2 px-4">ID Pedido</th>
+                                <th class="py-2 px-4">Cliente</th>
+                                <th class="py-2 px-4">Estado</th>
+                                <th class="py-2 px-4">Total</th>
+                                <th class="py-2 px-4">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-2 px-4">001</td>
+                                <td class="py-2 px-4">Juan Pérez</td>
+                                <td class="py-2 px-4">Pendiente</td>
+                                <td class="py-2 px-4">$100.00</td>
+                                <td class="py-2 px-4">
+                                    <button class="bg-blue-500 text-white px-2 py-1 rounded">Ver Detalles</button>
+                                    <button class="bg-green-500 text-white px-2 py-1 rounded">Descargar Factura</button>
+                                </td>
+                            </tr>
+                            <!-- Más filas -->
+                        </tbody>
+                    </table>
+                </section>
+                <section class="mt-6" style="display: none;">
+                    <h2 class="text-lg font-bold mb-4">Estadísticas</h2>
+                    <p>Gráficas y tablas de ventas mensuales.</p>
+                </section>
+                <section class="mt-6" style="display: none;">
+                    <h2 class="text-lg font-bold mb-4">Gestión de Usuarios</h2>
+                    <p>Crear nuevos usuarios y asignar roles.</p>
+                </section>
+                <section class="mt-6" style="display: none;">
+                    <h2 class="text-lg font-bold mb-4">Historial de Entregas</h2>
+                    <p>Acceso a imágenes de comprobantes de entrega.</p>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuLateral = document.getElementById('menu-lateral');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuClose = document.getElementById('menu-close');
+
+        menuToggle.addEventListener('click', () => {
+            menuLateral.classList.toggle('open');
+            menuOverlay.classList.toggle('active');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            menuLateral.classList.remove('open');
+            menuOverlay.classList.remove('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            menuLateral.classList.remove('open');
+            menuOverlay.classList.remove('active');
+        });
+
+        // Bloquear acceso desde dispositivos móviles
+        if (window.innerWidth <= 768) {
+            alert("Esta página no está disponible para dispositivos móviles.");
+            document.body.innerHTML = "<h1 style='text-align: center; margin-top: 20%;'>Esta página no está disponible para dispositivos móviles. Por favor, acceda desde un computador para continuar.</h1>";
+        }
+    </script>
+</body>
+</html>

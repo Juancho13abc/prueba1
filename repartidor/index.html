@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repartidor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Agregar en el <head> si no está incluida -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="../src/js/repartidor.js" defer></script>
+    <style>
+        /* Estilos adicionales para mejorar la barra lateral y la responsividad */
+        #menu-sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        #menu-sidebar.open {
+            transform: translateX(0);
+        }
+        #menu-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+        #menu-overlay.active {
+            display: block;
+        }
+        @media (min-width: 768px) {
+            #menu-sidebar {
+                transform: translateX(0);
+            }
+            #menu-overlay {
+                display: none;
+            }
+            #menu-toggle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="menu-overlay"></div>
+    <div class="flex">
+        <button id="menu-toggle" class="bg-gray-800 text-white p-2 fixed top-4 left-4 md:hidden">
+            <i class="fas fa-bars"></i>
+        </button>
+        <aside id="menu-sidebar" class="w-64 bg-gray-800 text-white h-screen fixed md:relative z-20">
+            <div class="p-4 text-center">
+                <i class="fas fa-truck text-4xl mb-2"></i> <!-- Ícono representativo -->
+                <div class="font-bold text-lg">Panel Repartidor</div>
+            </div>
+            <nav class="mt-4">
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700">
+                    <i class="fas fa-clipboard-list mr-2"></i> Pedidos Listos
+                </a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700">
+                    <i class="fas fa-history mr-2"></i> Historial
+                </a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700">
+                    <i class="fas fa-cog mr-2"></i> Configuración
+                </a>
+            </nav>
+        </aside>
+        <main class="flex-1 p-6">
+            <header class="flex justify-between items-center bg-white p-4 shadow">
+                <h1 class="text-xl font-bold">Bienvenido, Repartidor</h1>
+                <div>
+                    <span class="mr-4">Rol: Repartidor</span>
+                    <button class="bg-red-500 text-white px-4 py-2 rounded">Cerrar sesión</button>
+                </div>
+            </header>
+            <section class="mt-6">
+                <h2 class="text-lg font-bold mb-4">Pedidos Listos para Entregar</h2>
+                <table class="w-full bg-white shadow rounded text-sm">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="py-2 px-4">ID Pedido</th>
+                            <th class="py-2 px-4">Cliente</th>
+                            <th class="py-2 px-4">Dirección</th>
+                            <th class="py-2 px-4">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2 px-4">001</td>
+                            <td class="py-2 px-4">Juan Pérez</td>
+                            <td class="py-2 px-4">Calle 123</td>
+                            <td class="py-2 px-4">
+                                <!-- Botón para abrir la cámara o subir una foto -->
+                                <button class="bg-blue-500 text-white px-2 py-1 rounded" onclick="abrirEscanearModal()">Escanear</button>
+                            </td>
+                        </tr>
+                        <!-- Más filas -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para escanear o subir foto -->
+    <div id="escanear-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded shadow-lg w-96">
+            <h2 class="text-lg font-bold mb-4">Escanear Código</h2>
+            <p class="mb-4">Seleccione una opción para escanear el código:</p>
+            <div class="flex flex-col gap-4">
+                <button id="abrir-camara" class="bg-blue-500 text-white px-4 py-2 rounded">Abrir Cámara</button>
+                <label for="subir-foto" class="bg-green-500 text-white px-4 py-2 rounded text-center cursor-pointer">Subir Foto</label>
+                <input type="file" id="subir-foto" accept="image/*" class="hidden">
+            </div>
+            <button id="enviar-imagen" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hidden">Enviar Imagen</button>
+            <button onclick="cerrarEscanearModal()" class="mt-4 bg-gray-500 text-white px-4 py-2 rounded">Cerrar</button>
+        </div>
+    </div>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuSidebar = document.getElementById('menu-sidebar');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        menuToggle.addEventListener('click', () => {
+            menuSidebar.classList.toggle('open');
+            menuOverlay.classList.toggle('active');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            menuSidebar.classList.remove('open');
+            menuOverlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
